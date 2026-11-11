@@ -50,6 +50,9 @@ require_once ALIFY_DIR . '/inc/cpt/pricing.php';
 require_once ALIFY_DIR . '/inc/cpt/faqs.php';
 require_once ALIFY_DIR . '/inc/cpt/testimonials.php';
 
+/* ---------- Admin (Gutenberg disable, editor tweaks) ---------- */
+require_once ALIFY_DIR . '/inc/admin/disable-gutenberg.php';
+
 /* ---------- Components (reusable UI: buttons waghera) ---------- */
 require_once ALIFY_DIR . '/inc/components/buttons.php';
 
