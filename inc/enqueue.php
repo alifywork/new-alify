@@ -41,10 +41,21 @@ function alify_enqueue_assets() {
 		array(),
 		$ver
 	);
+	/* Icons: filemtime version => icons update karne par cache khud bust hota hai. */
+	$alify_icons_path = ALIFY_DIR . '/assets/css/icons.css';
+	$alify_icons_ver  = file_exists( $alify_icons_path ) ? (string) filemtime( $alify_icons_path ) : $ver;
+
+	wp_enqueue_style(
+		'alify-icons',
+		ALIFY_URI . '/assets/css/icons.css',
+		array( 'alify-bootstrap' ),
+		$alify_icons_ver
+	);
+
 	wp_enqueue_style(
 		'alify-style',
 		get_stylesheet_uri(),
-		array( 'alify-bootstrap' ),
+		array( 'alify-icons' ),
 		$ver
 	);
 	wp_enqueue_style(

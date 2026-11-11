@@ -4,7 +4,7 @@
    IMPORT ORDER:
      1) variables.css  — colors, gradients, fonts, tokens
      2) fonts.css      — @font-face (Manrope, Montserrat, Poppins)
-     3) icons.css      — Phosphor REGULAR icon classes (.ph-*)
+     3) icons.css      — Phosphor REGULAR icons (PHP se enqueue, filemtime version)
      4) utility.css    — saari utility CSS
    ------------------------------------------------------------
    YAAD RAKHNE WALI BAATEIN (rules):
@@ -33,9 +33,12 @@
 
 @import url("variables.css");
 @import url("fonts.css");
-@import url("icons.css");
 @import url("utility.css");
 @import url("components.css");
+
+/* NOTE: icons.css yahan import NAHI hota.
+   Wo inc/enqueue.php se load hota hai (filemtime version ke saath),
+   taake icons update karne par browser cache purana na dikhaye. */
 
 /* ===== BASE ===== */
 *,
