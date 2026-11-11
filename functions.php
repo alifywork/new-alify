@@ -50,6 +50,9 @@ require_once ALIFY_DIR . '/inc/cpt/pricing.php';
 require_once ALIFY_DIR . '/inc/cpt/faqs.php';
 require_once ALIFY_DIR . '/inc/cpt/testimonials.php';
 
+/* ---------- Components (reusable UI: buttons waghera) ---------- */
+require_once ALIFY_DIR . '/inc/components/buttons.php';
+
 /* ---------- Shortcodes (har shortcode apni file) ---------- */
 require_once ALIFY_DIR . '/inc/shortcodes/services.php';
 require_once ALIFY_DIR . '/inc/shortcodes/project.php';

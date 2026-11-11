@@ -91,6 +91,7 @@
   --fs-eyebrow:   clamp(0.75rem, 0.7rem + 0.22vw, 0.9375rem);
   --fs-accent:    clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
   --fs-badge:     clamp(0.6875rem, 0.65rem + 0.15vw, 0.8125rem);
+  --fs-btn:       clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
 
   /* Display / Hero extra (agar chahiye) */
   --fs-display:   clamp(2.5rem, 1.5rem + 4.5vw, 5rem);

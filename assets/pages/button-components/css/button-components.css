@@ -1,0 +1,84 @@
+/* ============================================================
+   button-components.css — sirf demo/preview page ke liye
+   (Buttons khud assets/css/components.css mein hain)
+   ============================================================ */
+
+.bc-section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  background-color: var(--color-white);
+}
+
+.bc-dark {
+  background: var(--o-night);
+  color: var(--color-white);
+}
+
+.bc-title {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+}
+
+.bc-dark .bc-title {
+  color: var(--color-white);
+}
+
+.bc-sub {
+  font-family: var(--font-body);
+  color: var(--color-muted);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.bc-dark .bc-sub {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.bc-block {
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.bc-dark .bc-block {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.bc-label {
+  display: block;
+  font-family: var(--font-eyebrow);
+  font-size: var(--fs-badge);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.bc-dark .bc-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.bc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.bc-code {
+  display: block;
+  margin-top: 1.125rem;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 0.66rem + 0.1vw, 0.75rem);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.bc-dark .bc-code {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.07);
+}

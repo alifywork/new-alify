@@ -1,0 +1,292 @@
+/* ============================================================
+   components.css — REUSABLE COMPONENTS (puri website mein)
+   ------------------------------------------------------------
+   BUTTONS — 4 designs. Colors/icons hamare variables se aate hain
+   (--color-teal, --color-amber-light, --color-border, --fs-btn ...),
+   icon = Phosphor thin: <i class="ph ph-arrow-up-right"></i>
+   ------------------------------------------------------------
+   1) OUTLINE  (white + border)      -> "Schedule a Call"
+      <a class="btn btn-outline" href="#">Schedule a Call</a>
+
+   2) FILL     (teal + white text)   -> "More Insights"
+      <a class="btn btn-fill" href="#">More Insights</a>
+
+   3) ARROW LINK (text + circle)     -> "Careers"
+      <a class="btn-arrow-link" href="#">Careers
+        <span class="btn-circle btn-circle-accent" aria-hidden="true">
+          <i class="ph ph-arrow-up-right"></i>
+        </span>
+      </a>
+
+   4) SPLIT    (pill + alag circle)  -> "Let's get started"
+      <a class="btn-split" href="#">
+        <span class="btn btn-fill">Let's get started</span>
+        <span class="btn-circle" aria-hidden="true">
+          <i class="ph ph-arrow-up-right"></i>
+        </span>
+      </a>
+   ------------------------------------------------------------
+   PHP:        alify_button( array( ... ) )   -> inc/components/buttons.php
+   Shortcode:  [alify_button text="..." url="..." style="split"]
+   Styles:     fill | outline | split | arrow-link
+   Sizes:      btn-sm | default | btn-lg
+   ============================================================ */
+
+/* ===== BUTTON BASE ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8125rem 1.75rem;
+  font-family: var(--font-accent);            /* Manrope */
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-white);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition);
+}
+
+.btn:focus-visible,
+.btn-arrow-link:focus-visible,
+.btn-split:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn.is-disabled,
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* ===== SIZES ===== */
+.btn-sm {
+  padding: 0.5rem 1.25rem;
+  font-size: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
+}
+
+.btn-lg {
+  padding: 1rem 2.25rem;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+}
+
+/* full-width helper (mobile / forms) */
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* ===== 1) OUTLINE — white + border ===== */
+.btn-outline {
+  background-color: var(--color-white);
+  border-color: var(--color-border);
+  color: var(--color-charcoal);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ===== 2) FILL — teal + white ===== */
+.btn-fill {
+  background-color: var(--color-teal);
+  border-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.btn-fill:hover {
+  filter: brightness(0.92);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-fill:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* secondary fill (alt sections) */
+.btn-fill.btn-primary-fill {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ===== CIRCLE (arrow container) ===== */
+.btn-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  flex-shrink: 0;
+  background-color: var(--color-teal);
+  color: var(--color-white);
+  border-radius: var(--radius-circle);
+  transition: all var(--transition);
+}
+
+.btn-circle .ph {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* accent circle -> amber-light bg + charcoal icon (variable based) */
+.btn-circle-accent {
+  background-color: var(--color-amber-light);
+  color: var(--color-charcoal);
+}
+
+/* ===== 3) ARROW LINK — text + circle ===== */
+.btn-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-accent);            /* Manrope */
+  font-size: var(--fs-btn);
+  font-weight: var(--fw-semibold);
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.btn-arrow-link:hover {
+  color: var(--color-primary);
+}
+
+.btn-arrow-link:hover .btn-circle {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== 4) SPLIT — pill + alag circle ===== */
+.btn-split {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform var(--transition);
+}
+
+/* split circle: teal bg + amber-light arrow (variables se) */
+.btn-split .btn-circle {
+  background-color: var(--color-teal);
+  color: var(--color-amber-light);
+}
+
+.btn-split:hover .btn {
+  filter: brightness(0.92);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-split:hover .btn-circle {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-split:active .btn {
+  transform: translateY(0);
+}
+
+/* ===== DARK SECTION CONTEXT (footer / hero) ===== */
+.btns-on-dark .btn-outline {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: var(--color-white);
+}
+
+.btns-on-dark .btn-outline:hover {
+  border-color: var(--color-amber-light);
+  color: var(--color-amber-light);
+}
+
+.btns-on-dark .btn-arrow-link {
+  color: var(--color-white);
+}
+
+.btns-on-dark .btn-arrow-link:hover {
+  color: var(--color-amber-light);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 575.98px) {
+  .btn {
+    padding: 0.75rem 1.375rem;
+  }
+
+  .btn-circle {
+    width: 2.125rem;
+    height: 2.125rem;
+  }
+
+  .btn-sm {
+    padding: 0.4375rem 1rem;
+  }
+}
+
+/* ===== A11Y: reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn-arrow-link,
+  .btn-split,
+  .btn-circle {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn-split:hover .btn,
+  .btn-split:hover .btn-circle,
+  .btn-arrow-link:hover .btn-circle {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   BOOTSTRAP CONFLICT GUARD
+   ------------------------------------------------------------
+   bootstrap.min.css pehle load hoti hai aur uska apna `.btn`
+   hai (--bs-btn-* variables). Hum sirf grid use karte hain,
+   lekin safety ke liye yeh overrides rakhe hain — taake
+   Bootstrap ka hover/active/focus behaviour hamare buttons
+   ko override na karay.
+   ============================================================ */
+.alify-btn.btn:focus-visible {
+  box-shadow: none;
+}
+
+.alify-btn.btn-fill:active,
+.alify-btn.btn-fill:first-child:active,
+.alify-btn.btn-fill.active,
+.alify-btn.btn-fill.show {
+  background-color: var(--color-teal);
+  border-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.alify-btn.btn-outline:active,
+.alify-btn.btn-outline:first-child:active,
+.alify-btn.btn-outline.active,
+.alify-btn.btn-outline.show {
+  background-color: var(--color-white);
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
