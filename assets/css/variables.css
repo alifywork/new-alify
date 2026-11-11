@@ -1,0 +1,169 @@
+/* ============================================================
+   variables.css — Saray CSS variables ek hi jagah
+   (Colors + Gradients + Fonts + Responsive Type Scale + Tokens)
+   ============================================================ */
+
+:root {
+  /* ===== BRAND COLORS ===== */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-primary: #0F3473;
+  --color-secondary: #F6F4F1;
+  --color-accent: #E05A3A;
+  --color-amber: #D98A2B;
+  --color-amber-light: #F4C778;
+  --color-teal: #0F8A73;
+  --color-charcoal: #12151C;
+
+  /* ===== NEUTRALS / HELPERS ===== */
+  --color-gray-100: #F7F8FA;
+  --color-gray-200: #ECEEF2;
+  --color-gray-300: #D7DBE2;
+  --color-gray-400: #A9B0BC;
+  --color-gray-500: #7A8290;
+  --color-gray-600: #545B68;
+  --color-gray-700: #3A404C;
+  --color-body: #2A2F3A;
+  --color-heading: #12151C;
+  --color-muted: #6C7380;
+  --color-border: #E4E7EC;
+  --color-overlay: rgba(18, 21, 28, 0.55);
+
+  /* ===== LIGHT GRADIENTS (calm / --g-) ===== */
+  --g-ocean:    linear-gradient(135deg, #E8EFF9 0%, #D6E6F0 55%, #D9EFE8 100%);  /* Sky Whisper */
+  --g-sunset:   linear-gradient(135deg, #FBF8F4 0%, #FAE6CF 50%, #F6D2C4 100%);  /* Soft Apricot */
+  --g-mist:     linear-gradient(160deg, #FFFFFF 0%, #F6F4F1 50%, #E6F1EE 100%);  /* Morning Mist */
+  --g-night:    linear-gradient(180deg, #F6F4F1 0%, #E3E8F3 50%, #CBD7EC 100%);  /* Dusk Haze */
+  --g-golden:   linear-gradient(120deg, #FFFFFF 0%, #FBEFD8 50%, #F7DFAE 100%);  /* Honey Milk */
+  --g-lake:     linear-gradient(145deg, #F6F4F1 0%, #D8EBE6 50%, #BFE0D8 100%);  /* Sea Glass */
+  --g-peach:    linear-gradient(135deg, #FFFFFF 0%, #FBE8DF 50%, #F8D9CC 100%);  /* Peach Cream */
+  --g-twilight: linear-gradient(180deg, #E3E9F5 0%, #E9E6F0 50%, #FBE7CB 100%);  /* Lavender Evening */
+  --g-glow:     radial-gradient(circle at 50% 30%, #FBE3B5 0%, #F6F4F1 50%, #FFFFFF 100%); /* Soft Radial Glow */
+  --g-aurora:
+    radial-gradient(at 20% 20%, rgba(15, 138, 115, 0.22) 0, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(15, 52, 115, 0.16) 0, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(244, 199, 120, 0.40) 0, transparent 50%),
+    radial-gradient(at 10% 85%, rgba(224, 90, 58, 0.14) 0, transparent 50%),
+    #FBFAF8;                                                                     /* Aurora Mesh */
+
+  /* ===== DARK / BOLD GRADIENTS (--o-) ===== */
+  --o-ocean:    linear-gradient(135deg, #0F3473 0%, #0F6A8A 55%, #0F8A73 100%);  /* Ocean Calm */
+  --o-sunset:   linear-gradient(135deg, #F6F4F1 0%, #F4C778 45%, #E05A3A 100%);  /* Sunset Glow */
+  --o-mist:     linear-gradient(160deg, #FFFFFF 0%, #F6F4F1 50%, #DCEBE7 100%);  /* Morning Mist */
+  --o-night:    linear-gradient(180deg, #12151C 0%, #0F3473 100%);               /* Deep Night */
+  --o-golden:   linear-gradient(120deg, #F6F4F1 0%, #F4C778 50%, #D98A2B 100%);  /* Golden Hour */
+  --o-lake:     linear-gradient(145deg, #12151C 0%, #0F3473 40%, #0F8A73 100%);  /* Forest Lake */
+  --o-peach:    linear-gradient(135deg, #F6F4F1 0%, #F8D9CC 50%, #F4C778 100%);  /* Peach Dream */
+  --o-twilight: linear-gradient(180deg, #0F3473 0%, #6B6F9C 50%, #F4C778 100%);  /* Twilight */
+  --o-glow:     radial-gradient(circle at 50% 30%, #F4C778 0%, #F6F4F1 45%, #FFFFFF 100%); /* Soft Radial Glow */
+  --o-aurora:
+    radial-gradient(at 20% 20%, rgba(15, 138, 115, 0.55) 0, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(15, 52, 115, 0.55) 0, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(244, 199, 120, 0.60) 0, transparent 50%),
+    radial-gradient(at 10% 85%, rgba(224, 90, 58, 0.35) 0, transparent 50%),
+    #F6F4F1;                                                                     /* Aurora Mesh */
+
+  /* ===== FONT FAMILIES (Point: heading=Montserrat, eyebrow/accent=Manrope, paragraph=Poppins) ===== */
+  --font-heading: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+  --font-eyebrow: 'Manrope', 'Segoe UI', system-ui, sans-serif;  /* eyebrow ke liye */
+  --font-accent:  'Manrope', 'Segoe UI', system-ui, sans-serif;   /* accent text ke liye */
+  --font-body:    'Poppins', 'Segoe UI', system-ui, sans-serif;   /* paragraphs ke liye */
+  --font-mono:    'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+
+  /* ===== RESPONSIVE TYPE SCALE (clamp se screen k hisaab se) =====
+     min-font  preferred  max-font
+     mobile    tablet     desktop                                      */
+
+  /* Paragraph / body */
+  --fs-body:      clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  --fs-sm:        clamp(0.8125rem, 0.78rem + 0.15vw, 0.9375rem);
+  --fs-lg:        clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+
+  /* Headings — Montserrat */
+  --fs-h1:        clamp(2.125rem, 1.4rem + 3.2vw, 4rem);
+  --fs-h2:        clamp(1.75rem, 1.25rem + 2.2vw, 3rem);
+  --fs-h3:        clamp(1.4375rem, 1.15rem + 1.3vw, 2.25rem);
+  --fs-h4:        clamp(1.25rem, 1.08rem + 0.7vw, 1.75rem);
+  --fs-h5:        clamp(1.125rem, 1.02rem + 0.4vw, 1.375rem);
+  --fs-h6:        clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+
+  /* Eyebrow / Accent / Small labels — Manrope */
+  --fs-eyebrow:   clamp(0.75rem, 0.7rem + 0.22vw, 0.9375rem);
+  --fs-accent:    clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  --fs-badge:     clamp(0.6875rem, 0.65rem + 0.15vw, 0.8125rem);
+
+  /* Display / Hero extra (agar chahiye) */
+  --fs-display:   clamp(2.5rem, 1.5rem + 4.5vw, 5rem);
+
+  /* ===== LINE HEIGHTS / TRACKING ===== */
+  --lh-tight:     1.15;
+  --lh-heading:   1.25;
+  --lh-body:      1.7;
+  --lh-eyebrow:   1.4;
+  --ls-tight:     -0.02em;
+  --ls-body:      0.01em;
+  --ls-eyebrow:   0.14em;   /* eyebrow letter-spacing */
+
+  /* ===== FONT WEIGHTS ===== */
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+  --fw-extrabold: 800;
+
+  /* ===== SPACING SCALE ===== */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+  --space-9:  6rem;
+  --space-10: 8rem;
+
+  /* ===== RADII ===== */
+  --radius-xs:   0.25rem;
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm:  0 1px 2px rgba(18, 21, 28, 0.06);
+  --shadow-md:  0 4px 12px rgba(18, 21, 28, 0.08);
+  --shadow-lg:  0 12px 32px rgba(18, 21, 28, 0.12);
+  --shadow-xl:  0 24px 56px rgba(18, 21, 28, 0.16);
+
+  /* ===== TRANSITIONS ===== */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   450ms;
+  --transition: var(--dur-base) var(--ease-out);
+
+  /* ===== Z-INDEX ===== */
+  --z-dropdown:  1000;
+  --z-sticky:    1020;
+  --z-fixed:     1030;
+  --z-modal:     1055;
+  --z-tooltip:   1080;
+
+  /* ===== LAYOUT ===== */
+  --header-height: 4.5rem;
+  --container-max: 75rem;      /* 1200px */
+  --section-y:     clamp(3.5rem, 2rem + 6vw, 6.5rem);  /* section vertical padding responsive */
+}
+
+/* ===== DARK THEME / SURFACE OVERRIDES (optional, class ya media se) ===== */
+[data-theme="dark"] {
+  --color-body:    #E7E9EE;
+  --color-heading: #FFFFFF;
+  --color-muted:   #A9B0BC;
+  --color-border:  #2A2F3A;
+  --color-overlay: rgba(0, 0, 0, 0.65);
+}

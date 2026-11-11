@@ -1,0 +1,252 @@
+/* ============================================================
+   style.css — MAIN stylesheet (sab se pehle yahi link karein)
+   ------------------------------------------------------------
+   IMPORT ORDER:
+     1) variables.css  — colors, gradients, fonts, tokens
+     2) fonts.css      — @font-face (Manrope, Montserrat, Poppins)
+     3) icons.css      — Phosphor thin icon classes (.ph-*)
+     4) utility.css    — saari utility CSS
+   ------------------------------------------------------------
+   YAAD RAKHNE WALI BAATEIN (rules):
+   1. Heading  -> Montserrat
+      Eyebrow  -> Manrope
+      Accent   -> Manrope
+      Paragraph-> Poppins
+   2. Saray fonts clamp() se screen k hisaab se responsive hain
+      (size variables.css main --fs-* mein hain).
+   3. Bootstrap SIRF grid/layout ke liye:
+      <section>  (ye HTML TAG hai — bootstrap class NAHI)
+        > .container | .container-fluid
+          > .row
+            > .col / .col-md-6 / ... (sirf col classes)
+      (Bootstrap ki full CSS assets/bootstrap/ se load hoti hai;
+       components buttons/modal waghera use nahi karne.)
+   4. Eyebrow ka start:
+      <i class="ph ph-triangle"></i>  — ye icon continue rotate hota hai
+   5. Har page ki apni CSS/JS alag folder mein:
+      assets/pages/<page-name>/css/<page-name>.css
+      assets/pages/<page-name>/js/<page-name>.js
+      (HTML mein style.css/phir us page ki CSS last mein link karein)
+   6. Bootstrap se conflict na ho: bootstrap.min.css PEHLE,
+      yeh file uske BAAD link karein.
+   ============================================================ */
+
+@import url("variables.css");
+@import url("fonts.css");
+@import url("icons.css");
+@import url("utility.css");
+
+/* ===== BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);          /* Paragraphs -> Poppins */
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--color-body);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ===== TYPOGRAPHY ===== */
+
+/* Headings -> Montserrat */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-heading);
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  text-wrap: balance;
+}
+
+h1, .h1 { font-size: var(--fs-h1); font-weight: var(--fw-extrabold); }
+h2, .h2 { font-size: var(--fs-h2); font-weight: var(--fw-extrabold); }
+h3, .h3 { font-size: var(--fs-h3); font-weight: var(--fw-bold); }
+h4, .h4 { font-size: var(--fs-h4); font-weight: var(--fw-bold); }
+h5, .h5 { font-size: var(--fs-h5); font-weight: var(--fw-semibold); }
+h6, .h6 { font-size: var(--fs-h6); font-weight: var(--fw-semibold); }
+
+.display-1 { font-size: var(--fs-display); font-weight: var(--fw-extrabold); line-height: var(--lh-tight); }
+
+/* Paragraphs -> Poppins */
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.lead {
+  font-size: var(--fs-lg);
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+/* Small text */
+small,
+.text-small {
+  font-size: var(--fs-sm);
+}
+
+/* ===== EYEBROW (Manrope + rotating triangle icon) =====
+   HTML:
+   <span class="eyebrow"><i class="ph ph-triangle"></i> Section Title</span>
+*/
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-eyebrow);       /* Eyebrow -> Manrope */
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+/* Triangle icon: start mein hoga aur continuously rotate karega */
+.eyebrow .ph-triangle,
+.eyebrow > i.ph:first-child {
+  width: 0.85em;
+  height: 0.85em;
+  animation: eyebrow-spin 4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes eyebrow-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Dark section par eyebrow variants */
+.eyebrow-light { color: var(--color-amber-light); }
+.eyebrow-white { color: var(--color-white); }
+
+/* ===== ACCENT TEXT (Manrope) ===== */
+.accent,
+.accent-text {
+  font-family: var(--font-accent);       /* Accent -> Manrope */
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+}
+
+/* ===== SECTION + BOOTSTRAP GRID PATTERN =====
+   Hum sirf ye 3 cheezein use karenge:
+
+   <section class="py-5">                     <- HTML tag (bootstrap class nahi)
+     <div class="container">                  <- ya container-fluid
+       <div class="row">
+         <div class="col-12 col-md-6">...</div>
+         <div class="col-12 col-md-6">...</div>
+       </div>
+     </div>
+   </section>
+*/
+section {
+  position: relative;
+}
+
+/* Agar chaho to section ko default spacing do (optional) */
+.section {
+  padding-block: var(--section-y);
+}
+
+/* ===== SCROLLBAR (subtle) ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-400);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
+
+/* ===== REDUCED MOTION (a11y) ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .eyebrow .ph-triangle,
+  .eyebrow > i.ph:first-child {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   PAGE-SPECIFIC CSS YAHAN NAHI —
+   assets/pages/<page-name>/css/<page-name>.css mein likhein
+   aur style.css ke BAAD HTML mein link karein.
+   ============================================================ */
