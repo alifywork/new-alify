@@ -48,6 +48,7 @@ function alify_theme_setup() {
 	register_nav_menus(
 		array(
 			'primary' => esc_html__( 'Primary Menu', 'alify' ),
+			'drawer'  => esc_html__( 'Drawer Menu (header panel)', 'alify' ),
 			'footer'  => esc_html__( 'Footer Menu', 'alify' ),
 		)
 	);
@@ -75,6 +76,14 @@ function alify_body_classes( $classes ) {
 			$classes[] = 'page-slug-' . sanitize_html_class( $alify_object->post_name );
 		}
 	}
+
+	/* Header context: solid header -> content ko neeche karo; transparent -> hero overlap. */
+	$classes[] = alify_header_is_transparent() ? 'alify-has-transparent-header' : 'alify-has-solid-header';
+
+	if ( alify_header_is_transparent() && alify_header_on_light() ) {
+		$classes[] = 'alify-header-on-light';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'alify_body_classes' );

@@ -1,0 +1,48 @@
+/* ============================================================
+   header-preview.css — sirf preview page ke liye
+   ============================================================ */
+
+.hp-hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-h) + 3rem) 0 4rem;
+  background: var(--o-night);
+  color: var(--color-white);
+}
+
+.hp-hero__title {
+  max-width: 18ch;
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 4rem);
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.hp-hero__text {
+  max-width: 48ch;
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2rem;
+}
+
+.hp-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+}
+
+.hp-filler {
+  padding: clamp(3rem, 8vw, 7rem) 0;
+  background-color: var(--color-white);
+}
+
+.hp-filler__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+  margin-bottom: 0.875rem;
+}
+
+.hp-filler p {
+  max-width: 60ch;
+  color: var(--color-muted);
+}

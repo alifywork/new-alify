@@ -54,6 +54,20 @@ function alify_enqueue_assets() {
 		$ver
 	);
 
+	/* ----- Header + drawer (component styles, hamesha site-wide) ----- */
+	wp_enqueue_style(
+		'alify-header',
+		ALIFY_URI . '/assets/css/header.css',
+		array( 'alify-main' ),
+		$ver
+	);
+	wp_enqueue_style(
+		'alify-drawer',
+		ALIFY_URI . '/assets/css/drawer.css',
+		array( 'alify-header' ),
+		$ver
+	);
+
 	/* ----- JS: GSAP -> ScrollTrigger -> Bootstrap -> main.js ----- */
 	wp_enqueue_script(
 		'alify-gsap',
@@ -80,6 +94,14 @@ function alify_enqueue_assets() {
 		'alify-main',
 		ALIFY_URI . '/assets/js/main.js',
 		array( 'alify-gsap' ),
+		$ver,
+		true
+	);
+
+	wp_enqueue_script(
+		'alify-header-js',
+		ALIFY_URI . '/assets/js/header.js',
+		array( 'alify-main' ),
 		$ver,
 		true
 	);

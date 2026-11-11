@@ -55,6 +55,7 @@ require_once ALIFY_DIR . '/inc/admin/disable-gutenberg.php';
 
 /* ---------- Components (reusable UI: buttons waghera) ---------- */
 require_once ALIFY_DIR . '/inc/components/buttons.php';
+require_once ALIFY_DIR . '/inc/components/header.php';
 
 /* ---------- Shortcodes (har shortcode apni file) ---------- */
 require_once ALIFY_DIR . '/inc/shortcodes/services.php';
