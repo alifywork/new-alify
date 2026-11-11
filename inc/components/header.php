@@ -50,6 +50,8 @@ function alify_header_settings() {
 		'about_eyebrow'      => __( 'About Alify', 'alify' ),
 		'about_title'        => __( 'We build brands that move business forward', 'alify' ),
 		'about_text'         => __( 'Alify is a strategy-led digital studio. We design, build and scale digital experiences that turn attention into revenue.', 'alify' ),
+		'contact_email'      => 'hello@alify.com',
+		'contact_phone'      => '+1 (000) 000-0000',
 		'show_cta'           => true,
 		'show_about'         => true,
 		'show_social'        => true,
@@ -67,6 +69,24 @@ function alify_header_settings() {
 	 * @param array $defaults Settings.
 	 */
 	return apply_filters( 'alify_header_settings', $defaults );
+}
+
+
+/**
+ * About drawer ke focus chips (Strategy / Design / Development ...).
+ *
+ * @return string[]
+ */
+function alify_about_focus_areas() {
+	return apply_filters(
+		'alify_about_focus_areas',
+		array(
+			__( 'Strategy', 'alify' ),
+			__( 'Brand & UI/UX', 'alify' ),
+			__( 'Development', 'alify' ),
+			__( 'SEO & Growth', 'alify' ),
+		)
+	);
 }
 
 /**

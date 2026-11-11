@@ -1,8 +1,13 @@
 /* ============================================================
-   drawer.css — Right side slide drawer (6-dots + hamburger)
+   drawer.css — Right side slide drawers (do alag panels)
    ------------------------------------------------------------
-   Contents: menu (saare pages), About Alify, CTAs, social icons.
-   Khulta hai: [data-alify-drawer-open]  |  Band: [data-alify-drawer-close], ESC, overlay
+   1) .alify-drawer--about  -> 6 dots icon (desktop): About Alify,
+      focus chips, CTAs, social icons.  DARK panel.
+   2) .alify-drawer--menu   -> hamburger (mobile): saare pages ka menu,
+      contact details, CTA.  LIGHT panel.
+
+   Khulta hai: [data-alify-drawer-open="about|menu"]
+   Band: [data-alify-drawer-close], ESC, overlay, link click
    JS: assets/js/header.js
    ============================================================ */
 
@@ -339,6 +344,147 @@ body.alify-drawer-open {
   .alify-drawer__list > .menu-item > a {
     transition: none;
   }
+}
+
+/* ============================================================
+   VARIANT 1 — ABOUT drawer (6 dots): DARK panel
+   ============================================================ */
+.alify-drawer--about .alify-drawer__panel {
+  background: var(--o-night);
+  color: var(--color-white);
+}
+
+.alify-drawer--about .alify-drawer__head {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+/* light logo drawer ke andar */
+.alify-brand--drawer .alify-brand__img--light.is-active {
+  display: inline-block;
+  height: 1.75rem;
+}
+
+.alify-drawer--about .alify-drawer__close {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.alify-drawer--about .alify-drawer__close:hover {
+  color: var(--color-charcoal);
+  background-color: var(--color-amber-light);
+  border-color: var(--color-amber-light);
+}
+
+.alify-drawer--about .eyebrow {
+  color: var(--color-amber-light);
+  margin-bottom: 0.75rem;
+}
+
+.alify-drawer--about .alify-drawer__about-title {
+  color: var(--color-white);
+  font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+}
+
+.alify-drawer--about .alify-drawer__about-text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* focus chips */
+.alify-drawer__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alify-drawer__chip {
+  padding: 0.5rem 0.875rem;
+  font-family: var(--font-accent);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-medium);
+  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-pill);
+}
+
+/* about drawer ke andar outline CTA dark bg ke liye */
+.alify-drawer--about .alify-btn.btn-outline {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+}
+
+.alify-drawer--about .alify-btn.btn-outline:hover {
+  border-color: var(--color-amber-light);
+  color: var(--color-amber-light);
+}
+
+.alify-drawer--about .alify-drawer__social {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.alify-drawer--about .alify-drawer__social-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.alify-drawer--about .alify-drawer__social-link {
+  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.alify-drawer--about .alify-drawer__social-link:hover {
+  color: var(--color-charcoal);
+  background-color: var(--color-amber-light);
+  border-color: var(--color-amber-light);
+}
+
+/* ============================================================
+   VARIANT 2 — MENU drawer (hamburger): LIGHT panel
+   ============================================================ */
+.alify-drawer--menu .alify-drawer__nav {
+  margin-top: -0.25rem;
+}
+
+.alify-drawer__contact {
+  margin-top: auto;
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.alify-drawer__contact-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.alify-drawer__contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-body);
+}
+
+.alify-drawer__contact-list .ph {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-teal);
+}
+
+.alify-drawer__contact-list a {
+  color: var(--color-body);
+  text-decoration: none;
+}
+
+.alify-drawer__contact-list a:hover {
+  color: var(--color-teal);
 }
 
 /* ===== NO-JS FALLBACK =====

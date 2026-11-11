@@ -3,7 +3,7 @@
  * Site header — left logo, center menu, right CTAs + 6-dots drawer trigger.
  *
  * Hero ke upar overlap karta hai (front page), thin + sticky.
- * Responsive par menu hamburger ban jata hai -> same right side drawer.
+ * 6 dots -> About drawer | Hamburger (mobile) -> Menu drawer.
  *
  * @package Alify
  */
@@ -83,13 +83,13 @@ if ( $alify_transparent && $alify_on_light ) {
 				</div>
 			<?php endif; ?>
 
-			<?php /* 6 dots — desktop drawer trigger */ ?>
-			<button type="button" class="alify-header__dots" data-alify-drawer-open aria-expanded="false" aria-controls="alify-drawer" aria-label="<?php esc_attr_e( 'Open menu panel', 'alify' ); ?>">
+			<?php /* 6 dots — ABOUT drawer (desktop) */ ?>
+			<button type="button" class="alify-header__dots" data-alify-drawer-open="about" aria-expanded="false" aria-controls="alify-drawer-about" aria-label="<?php esc_attr_e( 'Open about panel', 'alify' ); ?>">
 				<i class="ph ph-dots-six" aria-hidden="true"></i>
 			</button>
 
-			<?php /* Hamburger — mobile/tablet drawer trigger */ ?>
-			<button type="button" class="alify-header__burger" data-alify-drawer-open aria-expanded="false" aria-controls="alify-drawer" aria-label="<?php esc_attr_e( 'Open menu', 'alify' ); ?>">
+			<?php /* Hamburger — MENU drawer (mobile/tablet) */ ?>
+			<button type="button" class="alify-header__burger" data-alify-drawer-open="menu" aria-expanded="false" aria-controls="alify-drawer-menu" aria-label="<?php esc_attr_e( 'Open menu', 'alify' ); ?>">
 				<i class="ph ph-list" aria-hidden="true"></i>
 			</button>
 
@@ -97,6 +97,10 @@ if ( $alify_transparent && $alify_on_light ) {
 	</div>
 </header>
 
-<?php get_template_part( 'template-parts/header/drawer' ); ?>
+<?php
+/* Do alag drawers: about (6 dots) + menu (hamburger) */
+get_template_part( 'template-parts/header/drawer-about' );
+get_template_part( 'template-parts/header/drawer-menu' );
+?>
 
 <div id="content" class="site-content">

@@ -23,10 +23,14 @@
 				<div class="alify-header__brand">
 			<div class="alify-brand">
 	<a class="alify-brand__link" href="https://alify.test/" rel="home" aria-label="Alify — Home">
-					<img class="alify-brand__img alify-brand__img--light" src="../../assets/images/logo/light-logo.png" alt="Alify" width="469" height="125" loading="eager" decoding="async">
+
+		
+			<img class="alify-brand__img alify-brand__img--light" src="../../assets/images/logo/light-logo.png" alt="Alify" width="469" height="125" loading="eager" decoding="async">
 			<img class="alify-brand__img alify-brand__img--dark" src="../../assets/images/logo/dark-logo.png" alt="" width="469" height="125" loading="eager" decoding="async" aria-hidden="true">
 			<img class="alify-brand__img alify-brand__img--sticky" src="../../assets/images/logo/sticky-logo.png" alt="" width="469" height="125" loading="eager" decoding="async" aria-hidden="true">
-			</a>
+
+		
+	</a>
 </div>
 		</div>
 
@@ -41,11 +45,11 @@
 				<div class="alify-header__cta alify-header__cta--primary">
 					<a class="alify-btn btn-split" href="https://alify.test/contact/"><span class="btn btn-fill btn-sm">Let&#039;s get started</span><span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></span></a>				</div>
 			
-						<button type="button" class="alify-header__dots" data-alify-drawer-open aria-expanded="false" aria-controls="alify-drawer" aria-label="Open menu panel">
+						<button type="button" class="alify-header__dots" data-alify-drawer-open="about" aria-expanded="false" aria-controls="alify-drawer-about" aria-label="Open about panel">
 				<i class="ph ph-dots-six" aria-hidden="true"></i>
 			</button>
 
-						<button type="button" class="alify-header__burger" data-alify-drawer-open aria-expanded="false" aria-controls="alify-drawer" aria-label="Open menu">
+						<button type="button" class="alify-header__burger" data-alify-drawer-open="menu" aria-expanded="false" aria-controls="alify-drawer-menu" aria-label="Open menu">
 				<i class="ph ph-list" aria-hidden="true"></i>
 			</button>
 
@@ -53,36 +57,46 @@
 	</div>
 </header>
 
-<div id="alify-drawer" class="alify-drawer" data-alify-drawer aria-hidden="true">
+<div id="alify-drawer-about" class="alify-drawer alify-drawer--about" data-alify-drawer="about" aria-hidden="true">
 	<div class="alify-drawer__overlay" data-alify-drawer-close tabindex="-1" aria-hidden="true"></div>
 
-	<aside class="alify-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="alify-drawer-title">
+	<aside class="alify-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="alify-drawer-about-title">
 
 		<div class="alify-drawer__head">
-			<h2 id="alify-drawer-title" class="screen-reader-text">Menu</h2>
+			<h2 id="alify-drawer-about-title" class="screen-reader-text">About Alify</h2>
+
 			<div class="alify-brand alify-brand--drawer">
 	<a class="alify-brand__link" href="https://alify.test/" rel="home" aria-label="Alify — Home">
-					<img class="alify-brand__img alify-brand__img--dark is-active" src="../../assets/images/logo/dark-logo.png" alt="Alify" width="469" height="125" loading="eager" decoding="async">
-			</a>
+
+		
+			<img class="alify-brand__img alify-brand__img--light is-active" src="../../assets/images/logo/light-logo.png" alt="Alify" width="469" height="125" loading="eager" decoding="async">
+
+		
+	</a>
 </div>
-			<button type="button" class="alify-drawer__close" data-alify-drawer-close aria-label="Close menu">
+
+			<button type="button" class="alify-drawer__close" data-alify-drawer-close aria-label="Close panel">
 				<i class="ph ph-x" aria-hidden="true"></i>
 			</button>
 		</div>
 
 		<div class="alify-drawer__body">
 
-						<nav class="alify-drawer__nav" aria-label="Drawer menu">
-				<ul class="alify-drawer__list"><li class="menu-item current-menu-item"><a href="/">Home</a></li><li class="menu-item"><a href="/about-us/">About Us</a></li><li class="menu-item"><a href="/services/">Services</a></li><li class="menu-item"><a href="/project/">Projects</a></li><li class="menu-item"><a href="/case-studies/">Case Studies</a></li><li class="menu-item"><a href="/blogs/">Blogs</a></li><li class="menu-item"><a href="/contact-us/">Contact Us</a></li></ul>			</nav>
+						<div class="alify-drawer__about">
+				<p class="eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i>About Alify</p>
+				<h3 class="alify-drawer__about-title">We build brands that move business forward</h3>
+				<p class="alify-drawer__about-text">Alify is a strategy-led digital studio. We design, build and scale digital experiences that turn attention into revenue.</p>
+			</div>
 
-										<div class="alify-drawer__about">
-					<p class="eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i>About Alify</p>
-					<h3 class="alify-drawer__about-title">We build brands that move business forward</h3>
-					<p class="alify-drawer__about-text">Alify is a strategy-led digital studio. We design, build and scale digital experiences that turn attention into revenue.</p>
-				</div>
+													<ul class="alify-drawer__chips">
+											<li class="alify-drawer__chip">Strategy</li>
+											<li class="alify-drawer__chip">Brand &amp; UI/UX</li>
+											<li class="alify-drawer__chip">Development</li>
+											<li class="alify-drawer__chip">SEO &amp; Growth</li>
+									</ul>
 			
 										<div class="alify-drawer__ctas">
-					<a class="alify-btn btn-split alify-drawer__cta" href="https://alify.test/contact/"><span class="btn btn-fill">Let&#039;s get started</span><span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></span></a><a class="alify-btn btn btn-outline alify-drawer__cta" href="https://alify.test/contact/">Schedule a Call</a>				</div>
+					<a class="alify-btn btn-split" href="https://alify.test/contact/"><span class="btn btn-fill">Let&#039;s get started</span><span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></span></a><a class="alify-btn btn btn-outline" href="https://alify.test/contact/">Schedule a Call</a>				</div>
 			
 										<div class="alify-drawer__social">
 					<p class="alify-drawer__social-label">Follow us</p>
@@ -115,6 +129,53 @@
 											</ul>
 				</div>
 			
+		</div>
+	</aside>
+</div>
+<div id="alify-drawer-menu" class="alify-drawer alify-drawer--menu" data-alify-drawer="menu" aria-hidden="true">
+	<div class="alify-drawer__overlay" data-alify-drawer-close tabindex="-1" aria-hidden="true"></div>
+
+	<aside class="alify-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="alify-drawer-menu-title">
+
+		<div class="alify-drawer__head">
+			<h2 id="alify-drawer-menu-title" class="screen-reader-text">Menu</h2>
+
+			<div class="alify-brand alify-brand--drawer">
+	<a class="alify-brand__link" href="https://alify.test/" rel="home" aria-label="Alify — Home">
+
+		
+			<img class="alify-brand__img alify-brand__img--dark is-active" src="../../assets/images/logo/dark-logo.png" alt="Alify" width="469" height="125" loading="eager" decoding="async">
+
+		
+	</a>
+</div>
+
+			<button type="button" class="alify-drawer__close" data-alify-drawer-close aria-label="Close menu">
+				<i class="ph ph-x" aria-hidden="true"></i>
+			</button>
+		</div>
+
+		<div class="alify-drawer__body">
+
+						<nav class="alify-drawer__nav" aria-label="Main menu">
+				<ul class="alify-drawer__list"><li class="menu-item current-menu-item"><a href="/">Home</a></li><li class="menu-item"><a href="/about-us/">About Us</a></li><li class="menu-item"><a href="/services/">Services</a></li><li class="menu-item"><a href="/project/">Projects</a></li><li class="menu-item"><a href="/case-studies/">Case Studies</a></li><li class="menu-item"><a href="/blogs/">Blogs</a></li><li class="menu-item"><a href="/contact-us/">Contact Us</a></li></ul>			</nav>
+
+						<div class="alify-drawer__contact">
+				<p class="alify-drawer__social-label">Get in touch</p>
+				<ul class="alify-drawer__contact-list">
+											<li>
+							<i class="ph ph-envelope-simple" aria-hidden="true"></i>
+							<a href="mailto:hello@alify.com">hello@alify.com</a>
+						</li>
+					
+											<li>
+							<i class="ph ph-phone" aria-hidden="true"></i>
+							<a href="tel:+10000000000">+1 (000) 000-0000</a>
+						</li>
+									</ul>
+
+				<a class="alify-btn btn-split" href="https://alify.test/start-a-project/"><span class="btn btn-fill">Start a project</span><span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right" aria-hidden="true"></i><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></span></a>			</div>
+
 		</div>
 	</aside>
 </div>

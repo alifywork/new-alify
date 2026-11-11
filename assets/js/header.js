@@ -1,10 +1,12 @@
 /* ============================================================
    header.js — Site header behaviour
    ------------------------------------------------------------
-   1. Sticky state      -> .is-scrolled (thin height + white bg + sticky logo)
-   2. Drawer            -> open/close (6 dots + hamburger), overlay, ESC,
-                           focus trap, scroll lock, aria-expanded
-   3. Drawer submenus   -> accordion toggle buttons
+   1. Sticky state   -> .is-scrolled (thin height + white bg + sticky logo)
+   2. Drawers        -> do alag panels:
+                         6 dots   -> #alify-drawer-about  (About Alify)
+                         hamburger-> #alify-drawer-menu   (saare pages)
+                        open/close, overlay, ESC, focus trap, scroll lock
+   3. Submenus       -> menu drawer ke andar accordion toggles
    ============================================================ */
 (function () {
   'use strict';
@@ -40,95 +42,134 @@
   }
 
   /* ---------------------------------------------------------
-     2. DRAWER
+     2. DRAWERS (multiple)
      --------------------------------------------------------- */
-  var drawer = document.querySelector('[data-alify-drawer]');
+  var drawers = Array.prototype.slice.call(document.querySelectorAll('[data-alify-drawer]'));
 
-  if (!drawer) {
+  if (!drawers.length) {
     return;
   }
 
-  var panel = drawer.querySelector('.alify-drawer__panel');
-  var openers = document.querySelectorAll('[data-alify-drawer-open]');
-  var closers = drawer.querySelectorAll('[data-alify-drawer-close]');
+  var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-alify-drawer-open]'));
+  var activeDrawer = null;
+  var lastTrigger = null;
   var focusablesSelector =
     'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])';
-  var lastFocused = null;
 
-  function setExpanded(state) {
-    openers.forEach(function (btn) {
-      btn.setAttribute('aria-expanded', state ? 'true' : 'false');
-    });
-  }
+  var getPanel = function (drawer) {
+    return drawer.querySelector('.alify-drawer__panel');
+  };
 
-  function getFocusable() {
+  var getFocusable = function (drawer) {
+    var panel = getPanel(drawer);
     if (!panel) {
       return [];
     }
     return Array.prototype.filter.call(panel.querySelectorAll(focusablesSelector), function (el) {
-      return el.offsetParent !== null || el === document.activeElement;
+      return el.offsetParent !== null;
     });
-  }
+  };
 
-  function openDrawer(trigger) {
-    lastFocused = trigger || document.activeElement;
+  var syncTriggers = function () {
+    triggers.forEach(function (btn) {
+      var target = btn.getAttribute('aria-controls');
+      var isOpen = activeDrawer && activeDrawer.id === target;
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  };
+
+  var openDrawer = function (drawer, trigger) {
+    // doosra drawer khula ho to pehle band karo
+    if (activeDrawer && activeDrawer !== drawer) {
+      closeDrawer(activeDrawer, false);
+    }
+
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('alify-drawer-open');
-    setExpanded(true);
 
-    var focusable = getFocusable();
+    activeDrawer = drawer;
+    lastTrigger = trigger || document.activeElement;
+    syncTriggers();
+
+    var focusable = getFocusable(drawer);
     if (focusable.length) {
       window.setTimeout(function () {
         focusable[0].focus();
       }, 80);
     }
-  }
+  };
 
-  function closeDrawer() {
+  var closeDrawer = function (drawer, restoreFocus) {
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('alify-drawer-open');
-    setExpanded(false);
 
-    if (lastFocused && typeof lastFocused.focus === 'function') {
-      lastFocused.focus();
+    if (activeDrawer === drawer) {
+      activeDrawer = null;
     }
-  }
 
-  openers.forEach(function (btn) {
+    if (!activeDrawer) {
+      document.body.classList.remove('alify-drawer-open');
+    }
+
+    if (restoreFocus !== false && lastTrigger && typeof lastTrigger.focus === 'function') {
+      lastTrigger.focus();
+    }
+
+    syncTriggers();
+  };
+
+  triggers.forEach(function (btn) {
     btn.addEventListener('click', function (event) {
       event.preventDefault();
 
+      var name = btn.getAttribute('data-alify-drawer-open') || 'menu';
+      var drawer = null;
+
+      drawers.forEach(function (d) {
+        if (d.getAttribute('data-alify-drawer') === name) {
+          drawer = d;
+        }
+      });
+
+      if (!drawer) {
+        return;
+      }
+
       if (drawer.classList.contains('is-open')) {
-        closeDrawer();
+        closeDrawer(drawer, true);
       } else {
-        openDrawer(btn);
+        openDrawer(drawer, btn);
       }
     });
   });
 
-  closers.forEach(function (el) {
-    el.addEventListener('click', closeDrawer);
+  drawers.forEach(function (drawer) {
+    /* overlay / close button */
+    Array.prototype.forEach.call(drawer.querySelectorAll('[data-alify-drawer-close]'), function (el) {
+      el.addEventListener('click', function () {
+        closeDrawer(drawer, true);
+      });
+    });
+
+    /* andar link click -> band + normal navigation */
+    drawer.addEventListener('click', function (event) {
+      var link = event.target.closest ? event.target.closest('a[href]') : null;
+      if (link) {
+        closeDrawer(drawer, false);
+      }
+    });
   });
 
-  /* Drawer ke andar link click -> band + normal navigation */
-  drawer.addEventListener('click', function (event) {
-    var link = event.target.closest ? event.target.closest('a[href]') : null;
-    if (link && !link.matches('[data-alify-drawer-close]')) {
-      closeDrawer();
-    }
-  });
-
-  /* ESC + focus trap */
+  /* ESC + focus trap (sirf khule drawer ke andar) */
   document.addEventListener('keydown', function (event) {
-    if (!drawer.classList.contains('is-open')) {
+    if (!activeDrawer) {
       return;
     }
 
     if (event.key === 'Escape' || event.key === 'Esc') {
       event.preventDefault();
-      closeDrawer();
+      closeDrawer(activeDrawer, true);
       return;
     }
 
@@ -136,7 +177,7 @@
       return;
     }
 
-    var focusable = getFocusable();
+    var focusable = getFocusable(activeDrawer);
     if (!focusable.length) {
       return;
     }
@@ -153,12 +194,17 @@
     }
   });
 
-  /* Desktop par aa jayein to drawer band */
+  /* Desktop par aa jayein to menu drawer band (about drawer desktop ka hai) */
   var desktopQuery = window.matchMedia('(min-width: 992px)');
   var onDesktop = function (event) {
-    if (event.matches && drawer.classList.contains('is-open')) {
-      closeDrawer();
+    if (!event.matches) {
+      return;
     }
+    drawers.forEach(function (drawer) {
+      if (drawer.classList.contains('is-open') && drawer.getAttribute('data-alify-drawer') === 'menu') {
+        closeDrawer(drawer, false);
+      }
+    });
   };
 
   if (desktopQuery.addEventListener) {
@@ -168,12 +214,16 @@
   }
 
   /* ---------------------------------------------------------
-     3. DRAWER SUBMENUS (accordion)
+     3. SUBMENUS (menu drawer ke andar accordion)
      --------------------------------------------------------- */
-  var drawerList = drawer.querySelector('.alify-drawer__list');
+  drawers.forEach(function (drawer) {
+    var list = drawer.querySelector('.alify-drawer__list');
 
-  if (drawerList) {
-    Array.prototype.forEach.call(drawerList.querySelectorAll('.menu-item-has-children'), function (item) {
+    if (!list) {
+      return;
+    }
+
+    Array.prototype.forEach.call(list.querySelectorAll('.menu-item-has-children'), function (item) {
       var link = item.querySelector(':scope > a');
       var submenu = item.querySelector(':scope > .sub-menu');
 
@@ -199,5 +249,5 @@
         submenu.classList.toggle('is-open', !isOpen);
       });
     });
-  }
+  });
 })();
