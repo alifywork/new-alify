@@ -32,7 +32,7 @@ function alify_button_icons() {
 }
 
 /**
- * Icon markup (Phosphor thin).
+ * Icon markup (Phosphor regular).
  *
  * @param string $icon Icon name (bina `ph-` ke).
  * @return string Escaped HTML ya khali string.
@@ -198,9 +198,13 @@ function alify_button( $args = array() ) {
 
 			$pill_class = 'btn btn-fill' . ( '' !== $size ? ' btn-' . $size : '' );
 
+			/* Do icons: hover par pehla upar ja kar ghayab, dusra neeche se
+			   pehle wali jagah aa jata hai (btn-circle__icons). */
 			$html = '<' . $tag . $attr . '>'
 				. '<span class="' . esc_attr( $pill_class ) . '">' . $text_out . '</span>'
-				. '<span class="btn-circle" aria-hidden="true">' . $icon_out . '</span>'
+				. '<span class="btn-circle" aria-hidden="true">'
+				. '<span class="btn-circle__icons">' . $icon_out . $icon_out . '</span>'
+				. '</span>'
 				. '</' . $tag . '>';
 			break;
 

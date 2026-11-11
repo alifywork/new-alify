@@ -1,6 +1,7 @@
 <?php
 /**
  * Template routing:
+ * - Static pages -> templates/page-{slug}.php
  * - CPT single/archive/taxonomy queries -> templates/ folder ke files
  * - No-single CPT (pricing, faqs, testimonials) ke single URLs -> 301 archive par
  *
@@ -16,6 +17,23 @@ defined( 'ABSPATH' ) || exit;
  * @return string
  */
 function alify_map_cpt_templates( $template ) {
+	/* ---------- Static pages: slug -> templates/page-{slug}.php ---------- */
+	if ( is_page() ) {
+		$alify_page_id   = get_queried_object_id();
+		$alify_page_slug = $alify_page_id ? get_post_field( 'post_name', $alify_page_id ) : '';
+
+		if ( $alify_page_slug ) {
+			$alify_page_slug = sanitize_key( $alify_page_slug );
+			$alify_loc       = locate_template( array( "templates/page-{$alify_page_slug}.php" ) );
+
+			if ( $alify_loc ) {
+				return $alify_loc;
+			}
+		}
+
+		return $template;
+	}
+
 	if ( is_singular() ) {
 		$alify_pt = get_post_type();
 		if ( $alify_pt ) {

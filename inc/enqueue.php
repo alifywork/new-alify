@@ -54,11 +54,19 @@ function alify_enqueue_assets() {
 		$ver
 	);
 
+	/* ----- Sections (page templates ke shared sections) ----- */
+	wp_enqueue_style(
+		'alify-sections',
+		ALIFY_URI . '/assets/css/sections.css',
+		array( 'alify-main' ),
+		$ver
+	);
+
 	/* ----- Header + drawer (component styles, hamesha site-wide) ----- */
 	wp_enqueue_style(
 		'alify-header',
 		ALIFY_URI . '/assets/css/header.css',
-		array( 'alify-main' ),
+		array( 'alify-sections' ),
 		$ver
 	);
 	wp_enqueue_style(
