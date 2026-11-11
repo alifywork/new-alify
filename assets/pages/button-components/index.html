@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alify — Button Components</title>
+<link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/icons.css?v=1794410140">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="css/button-components.css">
+</head>
+<body data-page="button-components">
+
+<section class="bc-section">
+  <div class="container">
+
+    <p class="eyebrow"><i class="ph ph-triangle"></i> UI Components</p>
+    <h1 class="bc-title">Button Components</h1>
+    <p class="bc-sub">Chaar designs — colors aur icons hamare variables se.</p>
+
+    <!-- 1 -->
+    <div class="bc-block">
+      <span class="bc-label">1 — Outline (Schedule a Call)</span>
+      <div class="bc-row">
+        <a class="alify-btn btn btn-outline" href="#">Schedule a Call</a>
+        <a class="alify-btn btn btn-outline btn-sm" href="#">Small</a>
+        <a class="alify-btn btn btn-outline btn-lg" href="#">Large</a>
+      </div>
+      <code class="bc-code">&lt;a class="btn btn-outline" href="#"&gt;Schedule a Call&lt;/a&gt;</code>
+    </div>
+
+    <!-- 2 -->
+    <div class="bc-block">
+      <span class="bc-label">2 — Fill (More Insights)</span>
+      <div class="bc-row">
+        <a class="alify-btn btn btn-fill" href="#">More Insights</a>
+        <a class="alify-btn btn btn-fill btn-sm" href="#">Small</a>
+        <a class="alify-btn btn btn-fill btn-lg" href="#">Large</a>
+      </div>
+      <code class="bc-code">&lt;a class="btn btn-fill" href="#"&gt;More Insights&lt;/a&gt;</code>
+    </div>
+
+    <!-- 3 -->
+    <div class="bc-block">
+      <span class="bc-label">3 — Arrow Link (Careers)</span>
+      <div class="bc-row">
+        <a class="alify-btn btn-arrow-link" href="#">
+          <span class="alify-btn__label">Careers</span>
+          <span class="btn-circle btn-circle-accent" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+        </a>
+        <a class="alify-btn btn-arrow-link" href="#">
+          <span class="alify-btn__label">Get in touch</span>
+          <span class="btn-circle btn-circle-accent" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+        </a>
+      </div>
+      <code class="bc-code">&lt;a class="btn-arrow-link"&gt;Careers &lt;span class="btn-circle btn-circle-accent"&gt;&lt;i class="ph ph-arrow-up-right"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;</code>
+    </div>
+
+    <!-- 4 -->
+    <div class="bc-block">
+      <span class="bc-label">4 — Split (Let's get started)</span>
+      <div class="bc-row">
+        <a class="alify-btn btn-split" href="#">
+          <span class="btn btn-fill">Let&rsquo;s get started</span>
+          <span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span></span>
+        </a>
+        <a class="alify-btn btn-split" href="#">
+          <span class="btn btn-fill">Book a demo</span>
+          <span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span></span>
+        </a>
+      </div>
+      <code class="bc-code">&lt;a class="btn-split"&gt;&lt;span class="btn btn-fill"&gt;Let's get started&lt;/span&gt;&lt;span class="btn-circle"&gt;&lt;i class="ph ph-arrow-up-right"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;</code>
+    </div>
+
+    <!-- Disabled -->
+    <div class="bc-block">
+      <span class="bc-label">Disabled state</span>
+      <div class="bc-row">
+        <span class="alify-btn btn btn-fill is-disabled" aria-disabled="true">More Insights</span>
+        <span class="alify-btn btn btn-outline" aria-disabled="true" role="button" tabindex="0">Schedule a Call</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DARK SECTION -->
+<section class="bc-section bc-dark">
+  <div class="container btns-on-dark">
+    <p class="eyebrow"><i class="ph ph-triangle"></i> On Dark Background</p>
+    <div class="bc-row">
+      <a class="alify-btn btn btn-outline" href="#">Schedule a Call</a>
+      <a class="alify-btn btn btn-fill" href="#">More Insights</a>
+      <a class="alify-btn btn-arrow-link" href="#">
+        <span class="alify-btn__label">Careers</span>
+        <span class="btn-circle btn-circle-accent" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+      </a>
+      <a class="alify-btn btn-split" href="#">
+        <span class="btn btn-fill">Let&rsquo;s get started</span>
+        <span class="btn-circle" aria-hidden="true"><span class="btn-circle__icons"><i class="ph ph-arrow-up-right"></i><i class="ph ph-arrow-up-right"></i></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="../../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../js/main.js"></script>
+<script src="js/button-components.js"></script>
+</body>
+</html>
