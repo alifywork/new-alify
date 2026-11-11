@@ -22,9 +22,14 @@
       <a class="btn-split" href="#">
         <span class="btn btn-fill">Let's get started</span>
         <span class="btn-circle" aria-hidden="true">
-          <i class="ph ph-arrow-up-right"></i>
+          <span class="btn-circle__icons">            <!-- 2 icons = swap -->
+            <i class="ph ph-arrow-up-right"></i>
+            <i class="ph ph-arrow-up-right"></i>
+          </span>
         </span>
       </a>
+      Hover: background nahi badalta — pehla icon upar ghayab, dusra
+      neeche se uski jagah par aa jata hai.
    ------------------------------------------------------------
    PHP:        alify_button( array( ... ) )   -> inc/components/buttons.php
    Shortcode:  [alify_button text="..." url="..." style="split"]
@@ -216,9 +221,9 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  transition: transform 380ms cubic-bezier(0.65, 0.05, 0.36, 1),
-              opacity 190ms ease;
   will-change: transform, opacity;
+  transition: transform 380ms cubic-bezier(0.65, 0.05, 0.36, 1),
+              opacity 140ms ease;
 }
 
 /* pehla icon: andar, poori tarah visible */
@@ -227,10 +232,14 @@
   opacity: 1;
 }
 
-/* dusra icon: neeche chhupa hua + invisible */
+/* dusra icon: neeche chhupa hua + invisible.
+   Andar aate waqt opacity thodi dair se shuru hoti hai (120ms delay),
+   is liye pehla icon pehle GHAYAB hota hai, phir dusra nazar aata hai. */
 .btn-circle__icons .ph:nth-child(2) {
   transform: translateY(100%);
   opacity: 0;
+  transition: transform 380ms cubic-bezier(0.65, 0.05, 0.36, 1),
+              opacity 200ms ease 120ms;
 }
 
 /* hover / keyboard focus: pehla upar ghayab -> dusra neeche se aa jata hai */
